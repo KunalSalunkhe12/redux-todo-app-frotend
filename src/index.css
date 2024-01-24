@@ -13,19 +13,57 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.todo-container {
+:root {
+  --primary: #e3821a;
+  --secondary: #242424;
+  --tertiary: #fff;
+  --delete: #ea3714;
+  --complete: #19960b;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+hr {
+  border: none;
   width: 50%;
-  margin: auto;
+  border-top: 1px solid #eaeaea;
+  margin: 1rem auto;
+}
+
+.btn {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: var(--primary);
+  color: var(--tertiary);
+  align-self: flex-end;
+  margin-left: 20px;
+}
+
+.todo-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 100vh;
+  width: 40rem;
+  padding: 1rem;
+  margin: 0 auto;
 }
 
 .add-todo {
+  width: 100%;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 1rem;
+  margin: 1rem 0;
 }
 
 .add-todo div {
@@ -43,13 +81,31 @@
 }
 
 .add-btn {
-  align-self: end;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-  border: none;
-  outline: none;
-  font-size: 1rem;
-  cursor: pointer;
-  background-color: #e3821a;
-  color: #fff;
+  background-color: var(--primary);
+}
+
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.todo-item h3 {
+  font-size: 2rem;
+  color: var(--primary);
+}
+
+.delete-btn {
+  background-color: var(--delete);
+}
+
+.complete-btn {
+  background-color: var(--complete);
 }
