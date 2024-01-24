@@ -19,6 +19,7 @@
   --tertiary: #fff;
   --delete: #ea3714;
   --complete: #19960b;
+  --done: #b5aeae;
 }
 
 * {
@@ -108,4 +109,9 @@ hr {
 
 .complete-btn {
   background-color: var(--complete);
+}
+
+.todo-done {
+  text-decoration: line-through;
+  color: var(--done);
 }

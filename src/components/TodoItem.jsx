@@ -1,39 +1,38 @@
 import { useDeleteTodoMutation, useUpdateTodoMutation } from "../services/todo";
 
 const TodoItem = ({ todo }) => {
-  const [deleteTodo, result] = useDeleteTodoMutation();
-  const [updateTodo, completeResult] = useUpdateTodoMutation();
+  const [deleteTodo, { isError: isDeleteError, isLoading: isDeleteLoading }] =
+    useDeleteTodoMutation();
+  const [updateTodo, { isError: isUpdateError, isLoading: isUpdateLoading }] =
+    useUpdateTodoMutation();
 
-  console.log(result);
-  console.log(completeResult);
-
-  //   const handleComplete = async (id, completed) => {
-  //     await completeTodo({
-  //       id,
-  //       completed,
-  //     });
-
-  //   };
+  if (isDeleteError || isUpdateError) {
+    alert("Error");
+  }
 
   return (
     <>
       <div className="todo-item">
         <div>
-          <h3>{todo.name}</h3>
-          <p>{todo.description}</p>
+          <h3 className={todo.completed ? "todo-done" : ""}>{todo.name}</h3>
+          <p className={todo.completed ? "todo-done" : ""}>
+            {todo.description}
+          </p>
         </div>
         <div className="item-btn-container">
-          <button
-            onClick={() => updateTodo(todo._id, !todo.completed)}
-            className="btn complete-btn"
-          >
-            Completed
-          </button>
+          {!todo.completed && (
+            <button
+              onClick={() => updateTodo(todo._id, !todo.completed)}
+              className="btn complete-btn"
+            >
+              {isUpdateLoading ? "Loading..." : "Completed"}
+            </button>
+          )}
           <button
             onClick={() => deleteTodo(todo._id)}
             className="btn delete-btn"
           >
-            Delete
+            {isDeleteLoading ? "Loading..." : "Delete"}
           </button>
         </div>
       </div>
