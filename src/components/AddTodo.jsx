@@ -5,9 +5,13 @@ const AddTodo = () => {
   const [todo, setTodo] = useState({ name: "", description: "" });
   const [addTodo, { isError, isLoading }] = useAddTodoMutation();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    addTodo({
+
+    if (!todo.name || !todo.description)
+      return alert("Please fill all the fields");
+
+    await addTodo({
       name: todo.name,
       description: todo.description,
     });

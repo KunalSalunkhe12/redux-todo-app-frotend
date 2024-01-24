@@ -10,6 +10,8 @@ const TodoItem = ({ todo }) => {
     alert("Error");
   }
 
+  console.log(!todo.completed);
+
   return (
     <>
       <div className="todo-item">
@@ -22,7 +24,9 @@ const TodoItem = ({ todo }) => {
         <div className="item-btn-container">
           {!todo.completed && (
             <button
-              onClick={() => updateTodo(todo._id, !todo.completed)}
+              onClick={() =>
+                updateTodo({ id: todo._id, completed: !todo.completed })
+              }
               className="btn complete-btn"
             >
               {isUpdateLoading ? "Loading..." : "Completed"}
