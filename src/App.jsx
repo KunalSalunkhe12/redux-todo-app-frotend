@@ -11,7 +11,7 @@ function App() {
       <AddTodo />
       {isLoading && <div>Loading...</div>}
       {isSuccess && <TodoList todos={data} />}
-      {error && <div>{error}</div>}
+      {error && <div>{error.message}</div>}
     </div>
   );
 }
