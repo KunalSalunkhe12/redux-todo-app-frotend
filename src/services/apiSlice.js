@@ -3,31 +3,31 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const apiSlice = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_API_URL }),
-  tagTypes: ["Todos"],
+  tagTypes: ["Todo"],
   endpoints: (builder) => ({
     getTodos: builder.query({
-      query: () => "/todos",
-      providesTags: ["Todos"],
+      query: () => "/todo",
+      providesTags: ["Todo"],
     }),
     addTodo: builder.mutation({
       query: (todo) => ({
-        url: "/todos",
+        url: "/todo",
         method: "POST",
         body: todo,
       }),
-      invalidatesTags: ["Todos"],
+      invalidatesTags: ["Todo"],
     }),
     updateTodo: builder.mutation({
       query: (id, completed) => ({
-        url: `/todos/${id}`,
+        url: `/todo/${id}`,
         method: "PATCH",
         body: completed,
       }),
-      invalidatesTags: ["Todos"],
+      invalidatesTags: ["Todo"],
     }),
     deleteTodo: builder.mutation({
       query: ({ id }) => ({
-        url: `/todos/${id}`,
+        url: `/todo/${id}`,
         method: "DELETE",
         body: id,
       }),
