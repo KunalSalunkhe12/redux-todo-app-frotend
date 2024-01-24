@@ -36,11 +36,21 @@ const AddTodo = () => {
     <form className="add-todo" onSubmit={handleSubmit}>
       <div className="">
         <label htmlFor="name">Name</label>
-        <input type="text" id="name" onChange={handleChange} />
+        <input
+          type="text"
+          id="name"
+          onChange={handleChange}
+          value={todo.name}
+        />
       </div>
       <div className="">
         <label htmlFor="description">Description</label>
-        <input type="text" id="description" onChange={handleChange} />
+        <input
+          type="text"
+          id="description"
+          onChange={handleChange}
+          value={todo.description}
+        />
       </div>
       <button type="submit" className="btn add-btn">
         {isLoading ? "Adding..." : "Add"}
