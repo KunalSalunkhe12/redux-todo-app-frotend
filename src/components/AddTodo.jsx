@@ -3,9 +3,8 @@ import { useState } from "react";
 
 const AddTodo = () => {
   const [todo, setTodo] = useState({ name: "", description: "" });
-  const [addTodo, result] = useAddTodoMutation();
+  const [addTodo, { isError, isLoading }] = useAddTodoMutation();
 
-  console.log(result);
   const handleSubmit = (e) => {
     e.preventDefault();
     addTodo({
@@ -25,6 +24,10 @@ const AddTodo = () => {
     });
   };
 
+  if (isError) {
+    alert("Error");
+  }
+
   return (
     <form className="add-todo" onSubmit={handleSubmit}>
       <div className="">
@@ -36,7 +39,7 @@ const AddTodo = () => {
         <input type="text" id="description" onChange={handleChange} />
       </div>
       <button type="submit" className="btn add-btn">
-        Add Todo
+        {isLoading ? "Adding..." : "Add"}
       </button>
     </form>
   );
