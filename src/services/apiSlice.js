@@ -2,12 +2,11 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const apiSlice = createApi({
   reducerPath: "api",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3500" }),
+  baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_API_URL }),
   tagTypes: ["Todos"],
   endpoints: (builder) => ({
     getTodos: builder.query({
       query: () => "/todos",
-      transformResponse: (res) => res.sort((a, b) => b.id - a.id),
       providesTags: ["Todos"],
     }),
     addTodo: builder.mutation({
@@ -19,10 +18,10 @@ export const apiSlice = createApi({
       invalidatesTags: ["Todos"],
     }),
     updateTodo: builder.mutation({
-      query: (todo) => ({
-        url: `/todos/${todo.id}`,
+      query: (id, completed) => ({
+        url: `/todos/${id}`,
         method: "PATCH",
-        body: todo,
+        body: completed,
       }),
       invalidatesTags: ["Todos"],
     }),
