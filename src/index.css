@@ -45,7 +45,7 @@ hr {
   background-color: var(--primary);
   color: var(--tertiary);
   align-self: flex-end;
-  margin-left: 20px;
+  /* margin-left: 20px; */
 }
 
 .todo-container {
@@ -106,6 +106,7 @@ hr {
 
 .delete-btn {
   background-color: var(--delete);
+  margin-left: 20px;
 }
 
 .complete-btn {
@@ -115,4 +116,27 @@ hr {
 .todo-done {
   text-decoration: line-through;
   color: var(--done);
+}
+
+@media (max-width: 500px) {
+  .todo-container {
+    width: 100%;
+  }
+  .add-todo {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .add-todo div {
+    width: 100%;
+  }
+
+  .add-btn {
+    align-self: normal;
+  }
+
+  .todo-item {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
 }
